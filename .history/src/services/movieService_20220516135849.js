@@ -96,6 +96,7 @@ let handleGetAllcode = (type) => {
                 let data = await db.Allcode.findAll({
                     where: { type: type },
                 });
+                console.log(data);
                 resolve({
                     errCode: 0,
                     errMessge: "Get All code succeed",

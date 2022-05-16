@@ -16,7 +16,7 @@ let initWebRoutes = (app) => {
     router.delete("/api/delete-user", userController.handleDeleteUser);
     router.put("/api/update-user", userController.handleUpdateUser);
 
-    router.get("/api/get-allcode", movieController.handleGetAllcode);
+    router.get("/api/get-allcode", userController.handleGetAllcode);
 
     router.post("/api/create-new-movie", movieController.createNewMovie);
     router.get("/api/get-all-movies", movieController.handleGetAllMovie);

@@ -61,7 +61,7 @@ let handleUpdateMovie = async (req, res) => {
 
 let handleGetAllcode = async (req, res) => {
     try {
-        let response = await movieService.handleGetAllcode(req.query.type);
+        let response = await userService.handleGetAllcode(req.query.type);
         return res.status(200).json(response);
     } catch (e) {
         console.log(e);

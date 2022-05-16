@@ -84,7 +84,6 @@ let handleUpdateMovie = (data) => {
 };
 
 let handleGetAllcode = (type) => {
-    console.log(type);
     return new Promise(async (resolve, reject) => {
         try {
             if (!type) {
