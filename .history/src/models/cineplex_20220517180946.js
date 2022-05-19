@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
                 onDelete: "CASCADE",
                 hooks: true,
             });
+            Cineplex.hasMany(models.Cinema, {
+                foreignKey: "cineplex_id",
+                onDelete: "CASCADE",
+                hooks: true,
+            });
         }
     }
     Cineplex.init(

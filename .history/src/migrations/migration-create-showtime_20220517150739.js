@@ -9,7 +9,7 @@ module.exports = {
                 type: Sequelize.INTEGER,
             },
             cinema_id: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING,
             },
             movie_id: {
                 type: Sequelize.INTEGER,

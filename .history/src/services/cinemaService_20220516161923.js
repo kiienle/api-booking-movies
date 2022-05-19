@@ -12,6 +12,7 @@ let createNewCineplex = (data) => {
                 await db.Cineplex.create({
                     name: data.name,
                     address: data.address,
+                    description: data.description,
                     image: data.image,
                     googleMapsUrl: data.googleMapsUrl,
                 });
@@ -29,14 +30,7 @@ let createNewCineplex = (data) => {
 let handleGetAllCineplex = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let cineplexList = await db.Cineplex.findAll({
-                include: [
-                    {
-                        model: db.Cinema,
-                        attributes: ["name", "id"],
-                    },
-                ],
-            });
+            let cineplexList = await db.Cineplex.findAll();
             resolve({
                 errCode: 0,
                 errMessage: "Get all cineplex succeed...",
@@ -90,7 +84,7 @@ let createNewCinema = (data) => {
                 await db.Cinema.create({
                     name: data.name,
                     cineplex_id: data.cineplex_id,
-                    cinema_type: data.cinema_type,
+                    cinemaType_id: data.cinemaType_id,
                     vertical_size: data.vertical_size,
                     horizontal_size: data.horizontal_size,
                 });
@@ -108,19 +102,7 @@ let createNewCinema = (data) => {
 let handleGetAllCinema = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let cinemaList = await db.Cinema.findAll({
-                include: [
-                    {
-                        model: db.Cineplex,
-                        attributes: ["name"],
-                    },
-                    {
-                        model: db.Allcode,
-                        as: "typeData",
-                        attributes: ["valueVi", "valueEn"],
-                    },
-                ],
-            });
+            let cinemaList = await db.Cinema.findAll();
             resolve({
                 errCode: 0,
                 errMessage: "Get all Cinema succeed...",
@@ -164,30 +146,6 @@ let handleUpdateCinema = (data) => {
     });
 };
 
-let handleGetCinemaById = (id) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            if (!id) {
-                resolve({
-                    errCode: 1,
-                    errMessage: "Missing parametor from the server...",
-                });
-            } else {
-                let data = await db.Cinema.findAll({
-                    where: { cineplex_id: id },
-                });
-                resolve({
-                    errCode: 0,
-                    errMessage: "OK",
-                    data,
-                });
-            }
-        } catch (e) {
-            reject(e);
-        }
-    });
-};
-
 module.exports = {
     createNewCineplex,
     handleGetAllCineplex,
@@ -195,5 +153,4 @@ module.exports = {
     createNewCinema,
     handleGetAllCinema,
     handleUpdateCinema,
-    handleGetCinemaById,
 };

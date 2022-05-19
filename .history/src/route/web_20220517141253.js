@@ -30,7 +30,6 @@ let initWebRoutes = (app) => {
     router.post("/api/create-new-cinema", cinemaController.createNewCinema);
     router.get("/api/get-all-cinema", cinemaController.handleGetAllCinema);
     router.put("/api/update-cinema", cinemaController.handleUpdateCinema);
-    router.get("/api/get-cinema-by-id", cinemaController.handleGetCinemaById);
 
     router.post(
         "/api/create-new-showtime",

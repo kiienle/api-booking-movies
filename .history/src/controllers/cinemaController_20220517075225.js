@@ -19,7 +19,6 @@ let handleGetAllCineplex = async (req, res) => {
         let response = await cinemaService.handleGetAllCineplex();
         return res.status(200).json(response);
     } catch (e) {
-        console.log("==============================");
         console.log("Get all cineplex", e);
         return res.status(200).json({
             errCode: 1,
@@ -82,19 +81,6 @@ let handleUpdateCinema = async (req, res) => {
     }
 };
 
-let handleGetCinemaById = async (req, res) => {
-    try {
-        let response = await cinemaService.handleGetCinemaById(req.query.id);
-        return res.status(200).json(response);
-    } catch (e) {
-        console.log(e);
-        return res.status(200).json({
-            errCode: 1,
-            errMessage: "Error message from the server...",
-        });
-    }
-};
-
 module.exports = {
     createNewCineplex,
     handleGetAllCineplex,
@@ -102,5 +88,4 @@ module.exports = {
     createNewCinema,
     handleGetAllCinema,
     handleUpdateCinema,
-    handleGetCinemaById,
 };

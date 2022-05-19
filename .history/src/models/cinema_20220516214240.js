@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             // define association here
             Cinema.belongsTo(models.Cineplex, {
-                foreignKey: "cineplex_id",
-                targetKey: "id",
+                foreignKey: "id",
+                targetKey: "name",
             });
             Cinema.belongsTo(models.Allcode, {
                 foreignKey: "cinema_type",

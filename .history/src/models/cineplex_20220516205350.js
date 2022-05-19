@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
             // define association here
             Cineplex.hasMany(models.Cinema, {
                 foreignKey: "cineplex_id",
+                as: "cineplexName",
                 onDelete: "CASCADE",
                 hooks: true,
             });

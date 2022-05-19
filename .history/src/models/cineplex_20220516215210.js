@@ -10,14 +10,15 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             // define association here
             Cineplex.hasMany(models.Cinema, {
-                foreignKey: "cineplex_id",
-                onDelete: "CASCADE",
-                hooks: true,
+                foreignKey: { name: "cineplex_id", allowNull: true },
+                // onDelete: "CASCADE",
+                // hooks: true,
             });
         }
     }
     Cineplex.init(
         {
+            cineplex_id: DataTypes.UUID,
             name: DataTypes.STRING,
             address: DataTypes.STRING,
             description: DataTypes.STRING,

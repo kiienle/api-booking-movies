@@ -1,30 +1,34 @@
 "use strict";
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable("showtimes", {
+        await queryInterface.createTable("Cineplexes", {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER,
             },
-            cinema_id: {
-                type: Sequelize.INTEGER,
-            },
-            movie_id: {
-                type: Sequelize.INTEGER,
-            },
             cineplex_id: {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
                 type: Sequelize.INTEGER,
             },
-            show_time: {
+            address: {
                 type: Sequelize.STRING,
             },
-            price: {
+            name: {
                 type: Sequelize.STRING,
             },
-            date: {
-                type: Sequelize.STRING,
+            description: {
+                type: Sequelize.TEXT,
+            },
+            image: {
+                type: Sequelize.BLOB("long"),
+                allowNull: true,
+            },
+            googleMapsUrl: {
+                type: Sequelize.TEXT,
             },
             createdAt: {
                 allowNull: false,
@@ -37,6 +41,6 @@ module.exports = {
         });
     },
     down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable("showtimes");
+        await queryInterface.dropTable("Cineplexes");
     },
 };

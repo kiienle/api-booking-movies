@@ -11,16 +11,6 @@ module.exports = (sequelize, DataTypes) => {
             // define association here
             Showtime.belongsTo(models.Movie, { foreignKey: "movie_id" });
             Showtime.belongsTo(models.Cinema, { foreignKey: "cinema_id" });
-            Showtime.belongsTo(models.Allcode, {
-                foreignKey: "show_time",
-                targetKey: "keyMap",
-                as: "timeData",
-            });
-            Showtime.belongsTo(models.Allcode, {
-                foreignKey: "price",
-                targetKey: "keyMap",
-                as: "priceData",
-            });
             Showtime.hasMany(models.Booking, {
                 foreignKey: { name: "time_type", allowNull: true },
                 onDelete: "CASCADE",

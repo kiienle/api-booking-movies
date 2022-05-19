@@ -9,14 +9,11 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            Cinema.belongsTo(models.Cineplex, {
-                foreignKey: "cineplex_id",
-                targetKey: "id",
-            });
+            Cinema.belongsTo(models.Cineplex, { foreignKey: "cineplex_id" });
             Cinema.belongsTo(models.Allcode, {
                 foreignKey: "cinema_type",
                 targetKey: "keyMap",
-                as: "typeData",
+                as: "cine_type_data",
             });
             Cinema.hasMany(models.Showtime, {
                 foreignKey: { name: "cinema_id", allowNull: true },

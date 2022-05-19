@@ -33,7 +33,7 @@ let handleGetAllCineplex = () => {
                 include: [
                     {
                         model: db.Cinema,
-                        attributes: ["name", "id"],
+                        attributes: ["name"],
                     },
                 ],
             });
@@ -164,30 +164,6 @@ let handleUpdateCinema = (data) => {
     });
 };
 
-let handleGetCinemaById = (id) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            if (!id) {
-                resolve({
-                    errCode: 1,
-                    errMessage: "Missing parametor from the server...",
-                });
-            } else {
-                let data = await db.Cinema.findAll({
-                    where: { cineplex_id: id },
-                });
-                resolve({
-                    errCode: 0,
-                    errMessage: "OK",
-                    data,
-                });
-            }
-        } catch (e) {
-            reject(e);
-        }
-    });
-};
-
 module.exports = {
     createNewCineplex,
     handleGetAllCineplex,
@@ -195,5 +171,4 @@ module.exports = {
     createNewCinema,
     handleGetAllCinema,
     handleUpdateCinema,
-    handleGetCinemaById,
 };

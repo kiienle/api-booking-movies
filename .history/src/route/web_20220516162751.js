@@ -3,7 +3,6 @@ import homeController from "../controllers/homeController";
 import userController from "../controllers/userController";
 import movieController from "../controllers/movieController";
 import cinemaController from "../controllers/cinemaController";
-import showtimeController from "../controllers/showtimeController";
 
 let router = express.Router();
 
@@ -30,17 +29,6 @@ let initWebRoutes = (app) => {
     router.post("/api/create-new-cinema", cinemaController.createNewCinema);
     router.get("/api/get-all-cinema", cinemaController.handleGetAllCinema);
     router.put("/api/update-cinema", cinemaController.handleUpdateCinema);
-    router.get("/api/get-cinema-by-id", cinemaController.handleGetCinemaById);
-
-    router.post(
-        "/api/create-new-showtime",
-        showtimeController.createNewShowtime
-    );
-    router.get(
-        "/api/get-all-showtime",
-        showtimeController.handleGetAllShowtime
-    );
-    router.put("/api/update-showtime", showtimeController.handleUpdateShowtime);
 
     return app.use("/", router);
 };

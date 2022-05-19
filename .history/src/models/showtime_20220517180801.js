@@ -13,12 +13,10 @@ module.exports = (sequelize, DataTypes) => {
             Showtime.belongsTo(models.Cinema, { foreignKey: "cinema_id" });
             Showtime.belongsTo(models.Allcode, {
                 foreignKey: "show_time",
-                targetKey: "keyMap",
                 as: "timeData",
             });
             Showtime.belongsTo(models.Allcode, {
                 foreignKey: "price",
-                targetKey: "keyMap",
                 as: "priceData",
             });
             Showtime.hasMany(models.Booking, {
