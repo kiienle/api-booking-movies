@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
                 onDelete: "CASCADE",
                 hooks: true,
             });
+            Movie.belongsTo(models.Allcode, {
+                foreignKey: "state",
+                targetKey: "keyMap",
+                as: "stateData",
+            });
         }
     }
     Movie.init(
@@ -31,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
             poster: DataTypes.STRING,
             background: DataTypes.STRING,
             running_time: DataTypes.INTEGER,
-            release_date: DataTypes.STRING,
+            release_date: DataTypes.INTEGER,
             trailer: DataTypes.STRING,
             state: DataTypes.STRING,
             active: {

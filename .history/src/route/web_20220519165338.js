@@ -23,10 +23,7 @@ let initWebRoutes = (app) => {
     router.post("/api/create-new-movie", movieController.createNewMovie);
     router.get("/api/get-all-movies", movieController.handleGetAllMovie);
     router.put("/api/update-movie", movieController.handleUpdateMovie);
-    router.get(
-        "/api/get-movie-by-state",
-        movieController.handleGetMovieByState
-    );
+    router.get("/api/get-popular-movie", movieController.handleGetPopularMovie);
 
     router.post("/api/create-new-cineplex", cinemaController.createNewCineplex);
     router.get("/api/get-all-cineplex", cinemaController.handleGetAllCineplex);

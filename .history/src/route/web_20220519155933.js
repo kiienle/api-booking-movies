@@ -4,7 +4,6 @@ import userController from "../controllers/userController";
 import movieController from "../controllers/movieController";
 import cinemaController from "../controllers/cinemaController";
 import showtimeController from "../controllers/showtimeController";
-import allCodeController from "../controllers/allCodeController";
 
 let router = express.Router();
 
@@ -18,15 +17,12 @@ let initWebRoutes = (app) => {
     router.delete("/api/delete-user", userController.handleDeleteUser);
     router.put("/api/update-user", userController.handleUpdateUser);
 
-    router.get("/api/get-allcode", allCodeController.handleGetAllcode);
+    router.get("/api/get-allcode", movieController.handleGetAllcode);
 
     router.post("/api/create-new-movie", movieController.createNewMovie);
     router.get("/api/get-all-movies", movieController.handleGetAllMovie);
     router.put("/api/update-movie", movieController.handleUpdateMovie);
-    router.get(
-        "/api/get-movie-by-state",
-        movieController.handleGetMovieByState
-    );
+    router.get("/api/get-popular-movie", movieController.handleGetPopularMovie);
 
     router.post("/api/create-new-cineplex", cinemaController.createNewCineplex);
     router.get("/api/get-all-cineplex", cinemaController.handleGetAllCineplex);

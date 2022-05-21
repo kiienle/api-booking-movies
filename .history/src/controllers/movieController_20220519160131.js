@@ -59,12 +59,21 @@ let handleUpdateMovie = async (req, res) => {
     }
 };
 
-let handleGetMovieByState = async (req, res) => {
+let handleGetAllcode = async (req, res) => {
     try {
-        let response = await movieService.handleGetMovieByState(
-            req.query.state
-        );
+        let response = await movieService.handleGetAllcode(req.query.type);
         return res.status(200).json(response);
+    } catch (e) {
+        console.log(e);
+        return res.status(200).json({
+            errCode: 1,
+            errMessage: "Error message from the server...",
+        });
+    }
+};
+
+let handleGetPopularMovie = async (req, res) => {
+    try {
     } catch (e) {
         console.log(e);
         return res.status(200).json({
@@ -78,5 +87,6 @@ module.exports = {
     createNewMovie,
     handleGetAllMovie,
     handleUpdateMovie,
-    handleGetMovieByState,
+    handleGetAllcode,
+    handleGetPopularMovie,
 };

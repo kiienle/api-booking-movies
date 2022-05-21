@@ -59,11 +59,9 @@ let handleUpdateMovie = async (req, res) => {
     }
 };
 
-let handleGetMovieByState = async (req, res) => {
+let handleGetPopularMovie = async (req, res) => {
     try {
-        let response = await movieService.handleGetMovieByState(
-            req.query.state
-        );
+        let response = await movieService.handleGetPopularMovie();
         return res.status(200).json(response);
     } catch (e) {
         console.log(e);
@@ -78,5 +76,5 @@ module.exports = {
     createNewMovie,
     handleGetAllMovie,
     handleUpdateMovie,
-    handleGetMovieByState,
+    handleGetPopularMovie,
 };

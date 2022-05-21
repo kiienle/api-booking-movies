@@ -9,6 +9,16 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            Movie.hasMany(models.Showtime, {
+                foreignKey: { name: "movie_id", allowNull: true },
+                onDelete: "CASCADE",
+                hooks: true,
+            });
+            Movie.belongsTo(models.Allcode, {
+                foreignKey: "state",
+                targetKey: "keyMap",
+                as: "stateData",
+            });
         }
     }
     Movie.init(
@@ -17,15 +27,16 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 unique: true,
             },
-            movieId: DataTypes.INTEGER,
+            movie_id: DataTypes.INTEGER,
             title: DataTypes.STRING,
             description: DataTypes.TEXT,
             director: DataTypes.STRING,
             actor: DataTypes.STRING,
             genre: DataTypes.STRING,
-            poster: DataTypes.TEXT,
+            poster: DataTypes.STRING,
+            background: DataTypes.STRING,
             running_time: DataTypes.INTEGER,
-            release_date: DataTypes.STRING,
+            release_date: DataTypes.INTEGER,
             trailer: DataTypes.STRING,
             state: DataTypes.STRING,
             active: {

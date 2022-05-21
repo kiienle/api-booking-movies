@@ -34,7 +34,7 @@ module.exports = {
                 type: Sequelize.INTEGER,
             },
             release_date: {
-                type: Sequelize.STRING,
+                type: Sequelize.INTEGER,
             },
             poster: {
                 type: Sequelize.BLOB("long"),

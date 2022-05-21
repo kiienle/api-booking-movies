@@ -91,31 +91,24 @@ let handleUpdateMovie = (data) => {
     });
 };
 
-let handleGetMovieByState = (state) => {
+let handleGetPopularMovie = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            if (!state) {
+            let data = await db.Movie.findAll({
+                where: { state: "STATE3" },
+            });
+
+            if (!data) {
                 resolve({
                     errCode: 1,
-                    errMessage: "Missing parametor from the server...",
+                    errMessage: "Get popular movie fail...",
                 });
             } else {
-                let data = await db.Movie.findAll({
-                    where: { state: state },
+                resolve({
+                    errCode: 0,
+                    errMessage: "OK",
+                    data,
                 });
-
-                if (!data) {
-                    resolve({
-                        errCode: 2,
-                        errMessage: "Get popular movie fail...",
-                    });
-                } else {
-                    resolve({
-                        errCode: 0,
-                        errMessage: "OK",
-                        data,
-                    });
-                }
             }
         } catch (e) {
             reject(e);
@@ -127,5 +120,5 @@ module.exports = {
     createNewMovie,
     handleGetAllMovie,
     handleUpdateMovie,
-    handleGetMovieByState,
+    handleGetPopularMovie,
 };

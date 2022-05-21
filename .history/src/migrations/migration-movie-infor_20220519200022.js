@@ -12,6 +12,12 @@ module.exports = {
                 type: Sequelize.STRING,
                 unique: true,
             },
+            title: {
+                type: Sequelize.STRING,
+            },
+            movie_id: {
+                type: Sequelize.INTEGER,
+            },
             description: {
                 type: Sequelize.TEXT,
             },
@@ -28,10 +34,15 @@ module.exports = {
                 type: Sequelize.INTEGER,
             },
             release_date: {
-                type: Sequelize.STRING,
+                type: Sequelize.INTEGER,
             },
             poster: {
-                type: Sequelize.TEXT,
+                type: Sequelize.BLOB("long"),
+                allowNull: true,
+            },
+            background: {
+                type: Sequelize.BLOB("long"),
+                allowNull: true,
             },
             trailer: {
                 type: Sequelize.STRING,
